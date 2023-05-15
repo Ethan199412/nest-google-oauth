@@ -1,7 +1,8 @@
-import { BadRequestException, Controller, Get, Req, Res } from '@nestjs/common';
+import { BadRequestException, Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Request, Response } from 'express'
 import axios from 'axios';
+import { AuthGuard } from './auth/auth.guard';
 
 @Controller()
 export class AppController {
@@ -10,6 +11,13 @@ export class AppController {
   @Get()
   getHello(): string {
     return this.appService.getHello();
+  }
+
+  @Get('data')
+  @UseGuards(AuthGuard)
+  getDataByEmail(@Req() req: Request){
+    
+    return 'success' 
   }
 
   @Get('token')
@@ -28,6 +36,7 @@ export class AppController {
       client_secret: clientSecret,
       redirect_uri: 'http://localhost:3005/login',
       grant_type: 'authorization_code'
+  
     })
 
     console.log('[p0.2] res', res.data)
@@ -36,7 +45,7 @@ export class AppController {
     resp.cookie('access_token', access_token, {
       maxAge: expires_in * 1000 * 24,
       domain: 'localhost',
-      httpOnly: true,
+      httpOnly: false,
       sameSite: 'none',
       secure: true
       // path: '/login'

@@ -19,6 +19,9 @@ dependencies:
   axios:
     specifier: ^1.4.0
     version: registry.npmmirror.com/axios@1.4.0
+  cookie-parser:
+    specifier: ^1.4.6
+    version: registry.npmmirror.com/cookie-parser@1.4.6
   passport-google-oauth20:
     specifier: ^2.0.0
     version: 2.0.0
@@ -2041,13 +2044,6 @@ packages:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
     dev: true
 
-  /cookie-signature@1.0.6:
-    resolution: {integrity: sha1-4wOogrNCzD7oylE6eZmXNNqzriw=}
-
-  /cookie@0.5.0:
-    resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
-    engines: {node: '>= 0.6'}
-
   /cookiejar@2.1.4:
     resolution: {integrity: sha512-LDx6oHrK+PhzLKJU9j5S7/Y3jM/mUHvD/DeI1WQmJn652iPC5Y4TBzC9l+5OMOXlyTTA+SmVUPm0HQUwpD5Jqw==}
     dev: true
@@ -2442,8 +2438,8 @@ packages:
       body-parser: 1.20.1
       content-disposition: 0.5.4
       content-type: 1.0.5
-      cookie: 0.5.0
-      cookie-signature: 1.0.6
+      cookie: registry.npmmirror.com/cookie@0.5.0
+      cookie-signature: registry.npmmirror.com/cookie-signature@1.0.6
       debug: 2.6.9
       depd: 2.0.0
       encodeurl: 1.0.2
@@ -5342,6 +5338,34 @@ packages:
     name: commander
     version: 2.20.3
     dev: true
+
+  registry.npmmirror.com/cookie-parser@1.4.6:
+    resolution: {integrity: sha512-z3IzaNjdwUC2olLIB5/ITd0/setiaFMLYiZJle7xg5Fe9KWAceil7xszYfHHBtDFYLSgJduS2Ty0P1uJdPDJeA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cookie-parser/-/cookie-parser-1.4.6.tgz}
+    name: cookie-parser
+    version: 1.4.6
+    engines: {node: '>= 0.8.0'}
+    dependencies:
+      cookie: registry.npmmirror.com/cookie@0.4.1
+      cookie-signature: registry.npmmirror.com/cookie-signature@1.0.6
+    dev: false
+
+  registry.npmmirror.com/cookie-signature@1.0.6:
+    resolution: {integrity: sha512-QADzlaHc8icV8I7vbaJXJwod9HWYp8uCqf1xa4OfNu1T7JVxQIrUgOWtHdNDtPiywmFbiS12VjotIXLrKM3orQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cookie-signature/-/cookie-signature-1.0.6.tgz}
+    name: cookie-signature
+    version: 1.0.6
+
+  registry.npmmirror.com/cookie@0.4.1:
+    resolution: {integrity: sha512-ZwrFkGJxUR3EIoXtO+yVE69Eb7KlixbaeAWfBQB9vVsNn/o+Yw69gBWSSDK825hQNdN+wF8zELf3dFNl/kxkUA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cookie/-/cookie-0.4.1.tgz}
+    name: cookie
+    version: 0.4.1
+    engines: {node: '>= 0.6'}
+    dev: false
+
+  registry.npmmirror.com/cookie@0.5.0:
+    resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cookie/-/cookie-0.5.0.tgz}
+    name: cookie
+    version: 0.5.0
+    engines: {node: '>= 0.6'}
 
   registry.npmmirror.com/delayed-stream@1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/delayed-stream/-/delayed-stream-1.0.0.tgz}

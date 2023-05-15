@@ -57,6 +57,13 @@ function Main() {
     useEffect(() => {
         if (document.cookie.includes('access_token')) {
             setShowContent(true)
+            axios.get('http://localhost:3006/data',{
+                params:{
+                    email:'lijiahao@shopee.com'
+                }
+            }).then(res => {
+                console.log('res', res)
+            })
         }
     }, [])
 
@@ -95,11 +102,11 @@ function Login() {
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');
-        console.log('[p0.5] code',code)
+        console.log('[p0.5] code', code)
 
         // const clientId = '581133854653-l9sas35o3vf5kn1qttkvko7d7lqtbcbb.apps.googleusercontent.com'
         // const clientSecret = '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'
-    
+
         // const res = axios.post('https://oauth2.googleapis.com/token', {
         //   code,
         //   client_id: clientId,
@@ -110,11 +117,11 @@ function Login() {
         //     console.log('[p0.7] res', res)
         // })
 
-        axios.get('http://localhost:3006/token',{
-            params:{
+        axios.get('http://localhost:3006/token', {
+            params: {
                 code
             }
-        }).then(res=>{
+        }).then(res => {
             console.log('[p0.6] res', res)
         })
         // let query = window.location.href.split('?')[1].split('&')
@@ -130,7 +137,7 @@ function Login() {
 
     }, [])
 
-    const handleBack =()=>{
+    const handleBack = () => {
         location.href = '/'
     }
 
