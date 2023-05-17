@@ -47,7 +47,7 @@ export class AppController {
     // })
 
     console.log('[p0.2] res', res.data)
-    const { access_token, expires_in } = res.data
+    const { access_token, expires_in, refresh_token } = res.data
     
     resp.cookie('access_token', access_token, {
       maxAge: expires_in * 1000,
@@ -57,6 +57,16 @@ export class AppController {
       secure: true
       // path: '/login'
     })
+
+    if (refresh_token) {
+      resp.cookie('refresh_token', refresh_token, {
+        maxAge: 3600 * 1000 * 24 * 30,
+        domain: 'localhost',
+        httpOnly: false,
+        sameSite: 'none',
+        secure: true
+      })
+    }
 
     // resp.header('Access-Control-Allow-Origin', 'lo');
     resp.header('Access-Control-Allow-Credentials', 'true');
