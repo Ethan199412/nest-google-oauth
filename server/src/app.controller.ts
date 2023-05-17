@@ -36,9 +36,9 @@ export class AppController {
       client_id: clientId,
       client_secret: clientSecret,
       redirect_uri: 'http://localhost:3005/login',
-      grant_type: 'authorization_code',
+      // grant_type: 'authorization_code',
       access_type: 'offline',
-      prompt: "consent",
+      // prompt: "consent",
       // approval_prompt: 'force'
     })
 
