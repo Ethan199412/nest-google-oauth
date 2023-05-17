@@ -30,20 +30,27 @@ export class AppController {
     const clientId = '581133854653-l9sas35o3vf5kn1qttkvko7d7lqtbcbb.apps.googleusercontent.com'
     const clientSecret = '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'
 
-    const res = await axios.post('https://oauth2.googleapis.com/token', {
+    // const endpoint = 'https://oauth2.googleapis.com/token'
+    const endpoint = 'https://accounts.google.com/o/oauth2/token'
+    const res = await axios.post(endpoint, {
       code,
       client_id: clientId,
       client_secret: clientSecret,
       redirect_uri: 'http://localhost:3005/login',
-      grant_type: 'authorization_code'
-  
+      grant_type: 'authorization_code',
+      // grant_type: 'refresh_token'
+      access_type: 'offline'
     })
+
+    // const res2 = await axios.post('https://www.googleapis.com/oauth2/v4/token',{
+
+    // })
 
     console.log('[p0.2] res', res.data)
     const { access_token, expires_in } = res.data
     
     resp.cookie('access_token', access_token, {
-      maxAge: expires_in * 1000 * 24,
+      maxAge: expires_in * 1000,
       domain: 'localhost',
       httpOnly: false,
       sameSite: 'none',

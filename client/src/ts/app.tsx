@@ -73,6 +73,7 @@ function Main() {
             redirect_uri: 'http://localhost:3005/login',
             response_type: 'code',
             scope: 'email',
+            access_type: 'offline'
         });
         const url = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
         window.location.href = url;
