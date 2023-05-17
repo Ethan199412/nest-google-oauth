@@ -36,7 +36,7 @@ export class AppController {
       client_id: clientId,
       client_secret: clientSecret,
       redirect_uri: 'http://localhost:3005/login',
-      // grant_type: 'authorization_code',
+      grant_type: 'authorization_code',
       access_type: 'offline',
       // prompt: "consent",
       // approval_prompt: 'force'
@@ -54,15 +54,15 @@ export class AppController {
       // path: '/login'
     })
 
-    if (refresh_token) {
-      resp.cookie('refresh_token', refresh_token, {
-        maxAge: 3600 * 1000 * 24 * 30,
-        domain: 'localhost',
-        httpOnly: false,
-        sameSite: 'none',
-        secure: true
-      })
-    }
+    // if (refresh_token) {
+    //   resp.cookie('refresh_token', refresh_token, {
+    //     maxAge: 3600 * 1000 * 24 * 30,
+    //     domain: 'localhost',
+    //     httpOnly: false,
+    //     sameSite: 'none',
+    //     secure: true
+    //   })
+    // }
 
     // resp.header('Access-Control-Allow-Origin', 'lo');
     resp.header('Access-Control-Allow-Credentials', 'true');
