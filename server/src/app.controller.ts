@@ -15,9 +15,9 @@ export class AppController {
 
   @Get('data')
   @UseGuards(AuthGuard)
-  getDataByEmail(@Req() req: Request){
-    
-    return 'success' 
+  getDataByEmail(@Req() req: Request) {
+
+    return 'success'
   }
 
   @Get('token')
@@ -30,18 +30,21 @@ export class AppController {
     const clientId = '581133854653-l9sas35o3vf5kn1qttkvko7d7lqtbcbb.apps.googleusercontent.com'
     const clientSecret = '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'
 
-    const res = await axios.post('https://oauth2.googleapis.com/token', {
+    const endpoint = 'https://accounts.google.com/o/oauth2/token' // https://oauth2.googleapis.com/token
+    const res = await axios.post(endpoint, {
       code,
       client_id: clientId,
       client_secret: clientSecret,
       redirect_uri: 'http://localhost:3005/login',
-      grant_type: 'authorization_code'
-  
+      grant_type: 'authorization_code',
+      access_type: 'offline',
+      prompt: "consent",
+      // approval_prompt: 'force'
     })
 
     console.log('[p0.2] res', res.data)
-    const { access_token, expires_in } = res.data
-    
+    const { access_token, expires_in, refresh_token } = res.data
+
     resp.cookie('access_token', access_token, {
       maxAge: expires_in * 1000 * 24,
       domain: 'localhost',
@@ -50,6 +53,16 @@ export class AppController {
       secure: true
       // path: '/login'
     })
+
+    if (refresh_token) {
+      resp.cookie('refresh_token', refresh_token, {
+        maxAge: 3600 * 1000 * 24 * 30,
+        domain: 'localhost',
+        httpOnly: false,
+        sameSite: 'none',
+        secure: true
+      })
+    }
 
     // resp.header('Access-Control-Allow-Origin', 'lo');
     resp.header('Access-Control-Allow-Credentials', 'true');

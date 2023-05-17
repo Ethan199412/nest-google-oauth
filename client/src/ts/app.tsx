@@ -32,7 +32,11 @@ class App extends React.Component {
             client_id: '581133854653-l9sas35o3vf5kn1qttkvko7d7lqtbcbb.apps.googleusercontent.com',
             redirect_uri: 'http://localhost:3005/login',
             response_type: 'code',
-            scope: 'openid profile email',
+            // scope: 'openid profile email',
+            scope: 'email',
+            access_type: 'offline',
+            prompt: "consent",
+            // approval_prompt:'force'
         });
         const url = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
         window.location.href = url;
