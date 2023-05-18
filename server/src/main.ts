@@ -16,8 +16,8 @@ async function bootstrap() {
 }
 bootstrap();
 
-axios.defaults.proxy = {
-  host: 'localhost',
-  port: 7890,
-  protocol: 'http',
-};
+// axios.defaults.proxy = {
+//   host: 'localhost',
+//   port: 7890,
+//   protocol: 'http',
+// };

@@ -27,17 +27,6 @@ class App extends React.Component {
         console.log('[p1]', module.hot);
     }
 
-    handleGoogleLogin = () => {
-        const params = new URLSearchParams({
-            client_id: '581133854653-l9sas35o3vf5kn1qttkvko7d7lqtbcbb.apps.googleusercontent.com',
-            redirect_uri: 'http://localhost:3005/login',
-            response_type: 'code',
-            scope: 'openid profile email',
-        });
-        const url = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
-        window.location.href = url;
-    };
-
     render() {
         return (
             <>
@@ -57,12 +46,16 @@ function Main() {
     useEffect(() => {
         if (document.cookie.includes('access_token')) {
             setShowContent(true)
-            axios.get('http://localhost:3006/data',{
-                params:{
-                    email:'lijiahao@shopee.com'
+            axios.get('http://localhost:3006/data', {
+                params: {
+                    email: 'lijiahao@shopee.com'
                 }
             }).then(res => {
                 console.log('res', res)
+            })
+
+            axios.get('http://localhost:3006/check').then(res => {
+                console.log('[p1.0] res', res)
             })
         }
     }, [])
