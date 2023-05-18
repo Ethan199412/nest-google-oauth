@@ -44,32 +44,33 @@ class App extends React.Component {
 function Main() {
     const [showContent, setShowContent] = useState(false)
     useEffect(() => {
-        if (document.cookie.includes('access_token')) {
-            setShowContent(true)
-            axios.get('http://localhost:3006/data', {
-                params: {
-                    email: 'lijiahao@shopee.com'
-                }
-            }).then(res => {
-                console.log('res', res)
-            })
+        // if (document.cookie.includes('access_token')) {
+        //     setShowContent(true)
+        //     axios.get('http://localhost:3006/data', {
+        //         params: {
+        //             email: 'lijiahao@shopee.com'
+        //         }
+        //     }).then(res => {
+        //         console.log('res', res)
+        //     })
 
-            axios.get('http://localhost:3006/check').then(res => {
-                console.log('[p1.0] res', res)
-            })
-        }
+        //     axios.get('http://localhost:3006/check').then(res => {
+        //         console.log('[p1.0] res', res)
+        //     })
+        // }
     }, [])
 
     const handleGoogleLogin = () => {
-        const params = new URLSearchParams({
-            client_id: '581133854653-l9sas35o3vf5kn1qttkvko7d7lqtbcbb.apps.googleusercontent.com',
-            redirect_uri: 'http://localhost:3005/login',
-            response_type: 'code',
-            scope: 'email',
-            access_type: 'offline'
-        });
-        const url = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
-        window.location.href = url;
+        // const params = new URLSearchParams({
+        //     client_id: '581133854653-l9sas35o3vf5kn1qttkvko7d7lqtbcbb.apps.googleusercontent.com',
+        //     redirect_uri: 'http://localhost:3005/login',
+        //     response_type: 'code',
+        //     scope: 'email',
+        //     access_type: 'offline'
+        // });
+        // const url = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
+        // window.location.href = url;
+        axios.get('http://localhost:3006/google')
     };
 
     return <>
