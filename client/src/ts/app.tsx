@@ -54,7 +54,7 @@ function Main() {
                 console.log('res', res)
             })
 
-            axios.get('http://localhost:3006/check').then(res => {
+            axios.get('http://localhost:3006/auth/check').then(res => {
                 console.log('[p1.0] res', res)
             })
         }
@@ -72,6 +72,16 @@ function Main() {
         window.location.href = url;
     };
 
+    const handleSendRequest = () => {
+        axios.get('http://localhost:3006/data', {
+            params: {
+                email: 'lijiahao@shopee.com'
+            }
+        }).then(res => {
+            console.log('res', res)
+        })
+    }
+
     return <>
         {!showContent && <button onClick={handleGoogleLogin}>
             Sign in with Google
@@ -79,6 +89,7 @@ function Main() {
         {
             showContent && <div>
                 you login successfully, this is content
+                <button onClick={handleSendRequest}>send request</button>
             </div>
         }
     </>
@@ -93,6 +104,7 @@ function Login() {
                 return data;
             });
     }
+
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');
@@ -111,7 +123,7 @@ function Login() {
         //     console.log('[p0.7] res', res)
         // })
 
-        axios.get('http://localhost:3006/token', {
+        axios.get('http://localhost:3006/auth/token', {
             params: {
                 code
             }
